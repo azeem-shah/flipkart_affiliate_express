@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  head
+    title
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+
+  body
+    .rows
+      .col-md-4
+      .col-md-4
+        form.form-group(action='/book', method='post')
+          .form-group
+           label.control-label(for='exampleInputEmail1') id
+           input#subject.form-control(type='text', name='id', placeholder='id', required='required')
+          .form-group
+           label.control-label(for='exampleInputEmail1') Category
+           input#subject.form-control(type='text', name='category', placeholder='category', required='required')
+          .form-group
+           label.control-label(for='exampleInputEmail1') type
+           input#inputWarning1.form-control(type='text', name='type', placeholder='type', required='required')
+          .form-group
+           label.control-label(for='exampleInputEmail1') name
+           input#subject.form-control(type='text', name='name', placeholder='name', required='required')
+          .form-group
+           label.control-label(for='exampleInputEmail1') pic
+           input#subject.form-control(type='text', name='pic', placeholder='pic', required='required')
+          .form-group
+           label.control-label(for='exampleInputEmail1') seller
+           input#subject.form-control(type='text', name='seller', placeholder='seller', required='required')
+          .form-group
+           label.control-label(for='exampleInputEmail1') feature
+           input#subject.form-control(type='text', name='feature', placeholder='feature', required='required')
+          .form-group
+           label.control-label(for='exampleInputEmail1') flipkart link
+           input#subject.form-control(type='text', name='flipkartlink', placeholder='link', required='required')
+          .form-group
+           label.control-label(for='exampleInputEmail1') price
+           input#subject.form-control(type='text', name='price', placeholder='price', required='required')
+          .input
+            button.btn.btn-primary(type='submit') Send
+      .col-md-4
+

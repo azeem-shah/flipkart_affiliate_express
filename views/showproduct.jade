@@ -1,0 +1,177 @@
+extends layout
+
+block content
+  head
+    title
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js')
+    style().
+      #added{
+      display:none;
+      }
+       .dropdown-menu a:hover
+       {background-color: #f1f1f1}
+
+      .dropdown:hover .dropdown-menu {
+          display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+          background-color: #3e8e41;
+      }
+      #img1{
+        border-style: solid;
+        border-color: #E6E6E6;
+
+      }
+
+      
+
+
+
+  body
+    nav.navbar.navbar-default
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          //a.navbar-brand(href='/') TripKart
+          img(src='http://localhost:3000/images/tripkart.jpg' alt="nothing" )
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='#' hidden)
+               
+                span.sr-only (current)
+            li
+              a(href='/' ) Home
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                | Products 
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='/book') Books
+                li
+                  a(href='/footwear') Footwear
+                li
+                  a(href='/clothes') Clothing
+                //- li.divider(role='separator')
+                //- li
+                //-   a(href='#') Separated link
+                //- li.divider(role='separator')
+                //- li
+                //-   a(href='#') One more separated link
+          form.navbar-form.navbar-left(action='/search', method='post', accept-charset='utf-8')
+            .form-group
+              input.form-control(type='text', placeholder='Enter Product Name' name='search')
+            &nbsp;&nbsp;
+            button.btn.btn-default(type='submit') Submit
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#') Login
+            li
+              a(href='/cart') Cart
+               span.badge(id="added") 1
+        // /.navbar-collapse
+      // /.container-fluid
+    .rows
+     .col-md-2
+     .col-md-8
+        .rows
+            if items && items.length>0
+             each item in items
+                .panel.panel-default
+                  .panel-body
+                    .col-md-4
+                      img(src='#{image}' value='#{image}' alt='#{image}' width='275' height='350' id="img1" data-zoom-image="#{image}")
+                    .col-md-8
+                      h2(value='#{item.name}' id='nme')  #{item.name}
+                      input(type='text', value='#{item.name}', id='txtname' readonly hidden)
+                      input(type='text', value='#{item.price}', id='txtprice' readonly hidden)
+                      br
+                      h4  Type: #{item.type}
+                      h4  Features #{item.feature}
+                      h4  Seller #{item.seller}
+                      h4  Price Rs.  #{item.price}
+                      a(href='#{item.flipkartlink}') Buy
+                      &nbsp;&nbsp;
+                      button.btn.btn-warning(type='submit'  onclick='store()') Add to Cart
+
+            else
+              h3 Product not found. Sorry!
+     .col-md-2
+       .div(style="height:500px")
+    .rows
+      .col-md-4
+      .col-md-4
+        div(data-wrid='WRID-148525074846125632', data-widgettype='staticBanner', data-responsive='yes', data-class='affiliateAdsByFlipkart', height='250', width='300')
+        script(async='', src='//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js')
+      .col-md-4
+        .div(style="height:250px")
+        
+  p .
+  nav.navbar.navbar-default
+      .container
+        .rows
+          .col-md-4.col-sm-12
+            h3 Shop
+            ul.navbar-nav(style="list-style-type:none")
+              li
+                a(href='/') Home
+              br
+              li
+                a(href='/footwear') Footwear
+              br
+              li
+                a(href='/clothes') Clothes
+              br
+              li
+                a(href='/books') Books
+
+          .col-md-4.col-sm-12
+            h3(style='font-family: verdana') Get in touch with Us
+            h3 Location
+            p| Gomti Nagar <br> Lucknow, 226010
+          .col-md-4.col-sm-12
+           form(action='/subscribe', method='post', accept-charset='utf-8')
+            .form-group
+              h3 Subscribe
+            .rows
+             .col-md-10
+              .form-group
+               input.form-control(type='email', placeholder='Enter Email' name='subscribe' )
+
+             .col-md-2          
+               button.btn.btn-default(type='submit') Submit
+
+       
+  script(type="text/javascript").
+    $(function() {
+        $("#img1").elevateZoom();
+        });
+    function store(){
+      var productname=document.getElementById("txtname").value;
+       var productprice=document.getElementById("txtprice").value;
+     alert("product added");
+     $('#added').show();
+    if (typeof(Storage) !== "undefined") {
+    // Store 
+   
+    
+    localStorage.setItem("prodname", productname);
+     localStorage.setItem("prodprice",productprice);
+          // Retrieve
+         //  document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+      } else {
+          document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+      }
+    }

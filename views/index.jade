@@ -1,0 +1,207 @@
+extends layout
+
+block content
+  head
+    title
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link( href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet")
+
+    style().
+      
+      .dropdown-menu a:hover {background-color: #f1f1f1}
+
+      .dropdown:hover .dropdown-menu {
+          display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+          background-color: #3e8e41;
+      }
+      #homeimage:hover{
+       opacity:0.8;
+       transform: scale(1.025);
+      }
+      /*.navbar{
+      background-color:#F9EAEA;
+
+      } */
+
+
+
+    
+
+
+
+  body
+    nav.navbar.navbar-default
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          //a.navbar-brand(href='/') TripKart
+          img(src='images/tripkart.jpg' alt="nothing" )
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li(hidden)
+              a(href='#')
+                
+                span.sr-only (current)
+            li
+              a(href='/') Home
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                | Products 
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='/book') Books
+                li
+                  a(href='/footwear') Footwear
+                li
+                  a(href='/clothes') Clothing
+                //- li.divider(role='separator')
+                //- li
+                //-   a(href='#') Separated link
+                //- li.divider(role='separator')
+                //- li
+                //-   a(href='#') One more separated link
+          form.navbar-form.navbar-left(action='/search', method='post', accept-charset='utf-8')
+            .form-group
+              input.form-control(type='text', placeholder='Enter product Name' name='search')
+            &nbsp;&nbsp;
+            button.btn.btn-default(type='submit') Submit
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#') Login
+            li
+              a(href='/cart') Cart
+        // /.navbar-collapse
+      // /.container-fluid
+     img(src='images/flipkart1.jpg' width="100%"  id="flipkart")
+    .rows
+      h2(style="text-align:center;font-family: verdana") Shop Now
+      .col-md-3.col-sm-12
+        .thumbnail(style="text-align:center")
+          img(src='images/book5.jpeg', alt='nothing' height="300" width="200" id="homeimage")
+          .caption
+            h3(style="font-family: verdana") Wings Of Fire
+            p
+              strike Rs 599
+            p Rs 549
+      .col-md-3.col-sm-12
+        .thumbnail(style="text-align:center")
+          img(src='images/book1.jpeg', alt='nothing' height="300" width="200" id="homeimage")
+          .caption
+            h3(style="font-family: verdana") A Thousand Splendid Suns
+            p
+              strike Rs 699
+            p Rs 599
+      .col-md-3.col-sm-12
+        .thumbnail(style="text-align:center")
+          img(src='images/book2.jpeg', alt='nothing' height="300" width="200" id="homeimage")
+          .caption
+            h3(style="font-family: verdana") The Kite Runner
+            p
+              strike Rs 999
+            p Rs 889
+      .col-md-3.col-sm-12
+        .thumbnail(style="text-align:center")
+          img(src='images/book3.jpeg', alt='nothing' height="300" width="200" id="homeimage")
+          .caption
+            h3(style="font-family: verdana") The Alchemist
+            p
+              strike Rs 749
+            p Rs 699
+    .rows
+      h2(style="text-align:center;font-family: verdana") Testimonial
+      br
+      .col-md-1
+      .col-md-3
+        h4(style="text-align:center;font-family: verdana") I was amazed at the quality of Sparo.<br> I wish I would have thought of it first.<br> It is worth much more than I paid.
+        p(style="text-align:center") -Wadsworth H.
+      .col-md-3
+        h4(style="text-align:center;font-family: verdana") I would be lost without Sparo.&nbsp;<br>I could probably go into sales for you.
+        p(style="text-align:center") -Tred T.
+      .col-md-3
+        h4(style="text-align:center;font-family: verdana") Definitely worth the investment. I <br>am really satisfied with my Sparo kit. Thank You!  <br>Your company is truly upstanding and is behind its product 100%.
+        p(style="text-align:center") -Mike.
+      .col-md-2
+        .div(style="height:150px")
+        
+
+    .rows
+      h2(style="text-align:center;font-family: verdana") Flipkart Affiliate
+      br
+      
+     .col-md-3
+        div(data-wrid='WRID-148455360795667160', data-widgettype='Push Content', data-class='affiliateAdsByFlipkart', height='250', width='350' id="flipkartdiv")
+        script(async='', src='//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js')
+     .col-md-3
+        p(style="text-align:justify") We are very excited to introduce the Man Overboard kit: essentials for life on the go. Our goal was to create a beautiful set of leather goods that will be functional, simple and last a lifetime. We are making the whole kit available at a great price for purchase, along with each piece sold separately. Made to last, we built our carry kit to be able to handle all of the strain inherent in constant transport and handling. The strength and durability of vegetable tanned leather, paired with solid brass hardware and YKK zippers make sure that our products not only look good, but will last a lifetime.
+     .col-md-3
+        div(data-wrid='WRID-148524613074028110', data-widgettype='searchWidget', data-class='affiliateAdsByFlipkart', height='250', width='300' id="flipkartdiv")
+        script(async='', src='//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js')
+        
+     .col-md-3
+        h4(style="text-align:center;font-family: verdana") Shop Today!
+        p(style="text-align:justify") We built our carry kit to be able to handle all of the strain inherent in constant transport and handling. The strength and durability of vegetable tanned leather, paired with solid brass hardware and YKK zippers make sure that our products not only look good, but will last a lifetime.We are very excited to introduce the Man Overboard kit: essentials for life on the go. Our goal was to create a beautiful set of leather goods that will be functional, simple and last a lifetime. We are making the whole kit available at a great price for purchase
+    p .
+    nav.navbar.navbar-default
+      .container
+        .rows
+          .col-md-4.col-sm-12
+            h3(style='font-family: verdana') Shop
+            ul.navbar-nav(style="list-style-type:none")
+              li
+                a(href='/') Home
+              br
+              li
+                a(href='/footwear') Footwear
+              br
+              li
+                a(href='/clothes') Clothes
+              br
+              li
+                a(href='/books') Books
+
+          .col-md-4.col-sm-12
+            h3(style='font-family: verdana') Get in touch with Us
+            h3 Location
+            p| Gomti Nagar <br> Lucknow, 226010
+          .col-md-4.col-sm-12
+           form(action='/subscribe', method='post', accept-charset='utf-8')
+            .form-group
+              h3(style='font-family: verdana') Subscribe
+            .rows
+             .col-md-10
+              .form-group
+               input.form-control(type='email', placeholder='Enter Email' name='subscribe' )
+
+             .col-md-2          
+               button.btn.btn-default(type='submit') Submit
+
+
+
+
+  script(type="text/javascript").
+   if (typeof(Storage) !== "undefined") {
+    // Store 
+   
+    
+    localStorage.setItem("prodname", "");
+     localStorage.setItem("prodprice","");
+          // Retrieve
+         //  document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+      } else {
+          document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+      }
+
+
+
