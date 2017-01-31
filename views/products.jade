@@ -1,0 +1,113 @@
+extends layout
+
+block content
+  head
+    title
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link( href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js')
+  style().
+          .dropdown-menu a:hover
+           {background-color: #f1f1f1}
+
+          .dropdown:hover .dropdown-menu {
+              display: block;
+          }
+
+          .dropdown:hover .dropbtn {
+              background-color: #3e8e41;
+          }
+
+
+
+    
+
+
+
+  body
+    nav.navbar.navbar-default
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          //a.navbar-brand(href='/') TripKart
+          img(src='images/tripkart.jpg' alt="nothing" )
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li(hidden)
+              a(href='#')
+                
+                span.sr-only (current)
+            li
+              a(href='/') Home
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                | Products 
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='/book') Books
+                li
+                  a(href='/footwear') Footwear
+                li
+                  a(href='/clothes') Clothing
+                li
+                  a(href='/products') Flipkart Nutrition
+                //- li.divider(role='separator')
+                //- li
+                //-   a(href='#') Separated link
+                //- li.divider(role='separator')
+                //- li
+                //-   a(href='#') One more separated link
+          form.navbar-form.navbar-left(action='/search', method='post', accept-charset='utf-8')
+            .form-group
+              input.form-control(type='text', placeholder='Enter product Name' name='search')
+            &nbsp;&nbsp;
+            button.btn.btn-default(type='submit') Submit
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#') Login
+            li
+              a(href='/cart') Cart
+        // /.navbar-collapse
+      // /.container-fluid
+    .rows
+      .col-md-2
+        h2 filters
+      .col-md-10
+        h2 Products are:
+        if items && items.length>0
+             each item in items
+               .col-md-4
+                .panel.panel-default
+                  .panel-body
+                    .col-md-4
+                      img(src='#{item}' value='' alt='nothing' width='100' 
+                      height='150' id="img1" data-zoom-image="#{item}")
+                    .col-md-8
+                      h2(value='' id='nme')  name
+                      //- input(type='text', value='#{item.name}', id='txtname' readonly hidden)
+                      //- input(type='text', value='#{item.price}', id='txtprice' readonly hidden)
+                      //- br
+                      //- h4  Type: #{item.type}
+                      //- h4  Features #{item.feature}
+                      //- h4  Seller #{item.seller}
+                      //- h4  Price Rs.  #{item.price}
+                      //- a(href='#{item.flipkartlink}') Buy
+                      &nbsp;&nbsp;
+                      button.btn.btn-warning(type='submit'  onclick='store()') Add to Cart
+
+            else
+              h3 Product not found. Sorry!
+  script(type="text/javascript").
+        $(function() {
+        $("#img1").elevateZoom();
+        });

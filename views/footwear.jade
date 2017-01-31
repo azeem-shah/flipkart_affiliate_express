@@ -55,6 +55,8 @@ block content
                   a(href='/footwear') Footwear
                 li
                   a(href='/clothes') Clothing
+                li
+                  a(href='/products') Flipkart Nutrition
                 //- li.divider(role='separator')
                 //- li
                 //-   a(href='#') Separated link
@@ -75,11 +77,12 @@ block content
       // /.container-fluid
   .rows
     .col-md-2.col-sm-2.col-xs-5
-      h4 Search here
+      
 
       form.form-inline(action='/sortfootwear', method='post', accept-charset='utf-8')
           .form-group
-            label.col-xs-3.control-label Select Category
+            label.control-label Select Category
+          br
           br
           .form-group
               
@@ -87,14 +90,12 @@ block content
                   option(value='') Choose
                   option(value='men')  Men 
                   option(value='women') Women 
-          button(type='submit')  submit
+          button(type='submit')  Submit
       br
       br
       div(data-wrid='WRID-148525102188654497', data-widgettype='productBanner', data-class='affiliateAdsByFlipkart', height='240px', width='120px')
       script(async='', src='//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js')
-      br
-      div(data-wrid='WRID-148525111970255799', data-widgettype='productBanner', data-class='affiliateAdsByFlipkart', height='240px', width='120px')
-      script(async='', src='//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js')
+
     .col-md-10.col-sm-10.col-xs-7
       h2 FootWear
       if items && items.length>0

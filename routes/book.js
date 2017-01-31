@@ -22,6 +22,7 @@ router.post('/sortbook',function(req,res){
   console.log(req.body.category)
   var sortby=req.body.category;
 
+
   if(sortby=="drama"){
 
 console.log("in darama if")
@@ -51,6 +52,8 @@ book.find({type:"drama"}, function (err, docs) {
               }     
         });
   }
+
+
 
 })
 

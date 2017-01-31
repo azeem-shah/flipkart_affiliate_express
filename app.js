@@ -16,6 +16,8 @@ var showproduct=require('./routes/showproduct');
 var cart=require('./routes/cart');
 var search=require('./routes/search')
 
+var products=require('./routes/products');
+
 
 var app = express();
 
@@ -45,6 +47,8 @@ app.get('/showproduct/:id',showproduct);
 app.get('/cart',cart);
 
 app.post('/search',search);
+
+app.get('/products',products);
 
 
 /// catch 404 and forwarding to error handler
